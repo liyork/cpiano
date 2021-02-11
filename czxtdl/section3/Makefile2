@@ -1,0 +1,23 @@
+# source file
+SRCS = testgcc.c helper.c
+# target file
+TARG = testgcc
+# compiler, compile flags, libs
+CC = gcc
+OPTS = -Wall -O
+LIBS = -lm
+# translate .c files in src list to .o's
+OBJS =$(SRCS:.c=.o)
+# generate the target
+all: $(TARG)
+# generate the target executable
+$(TARG): $(OBJS)
+	$(CC) -o $(TARG) $(OBJS) $(LIBS)
+# generic rule for .o files
+%.o: %.c
+	$(CC) $(OPTS) -c $< -o $@
+
+clean:
+	rm -f $(OBJS) $(TARG)
+
+# make -f Makefile2

@@ -1,0 +1,15 @@
+testgcc: testgcc.o helper.o
+	gcc -o testgcc testgcc.o helper.o -lm
+
+testgcc.o: testgcc.c
+	gcc -O -Wall -c testgcc.c
+
+helper.o: helper.c
+	gcc -O -Wall -c helper.c
+
+clean:
+	rm -f testgcc.o helper.o testgcc
+
+
+# make -f Makefile1
+# make -f Makefile1 clean
